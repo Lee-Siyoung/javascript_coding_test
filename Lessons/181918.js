@@ -5,6 +5,7 @@
 // stk에 원소가 있는데 stk의 마지막 원소가 arr[i]보다 크거나 같으면 stk의 마지막 원소를 stk에서 제거합니다.
 // 위 작업을 마친 후 만들어진 stk를 return 하는 solution 함수를 완성해 주세요.
 
+
 function solution(arr) {
   var stk = [];
   for(let i=0; i<arr.length;){
