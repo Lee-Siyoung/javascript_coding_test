@@ -10,24 +10,26 @@ function solution(a, b, c, d) {
   const dice = [a,b,c,d];
   const counts = {};
   for(const num of dice){
-      counts[num] = (counts[num] || 0)+1;
+      counts[num] = (counts[num] || 0)+1;  // 숫자별 등장 횟수
   }
-  const entries = Object.entries(counts);
-  const nums = entries.map(e=>Number(e[0]));
-  const freqs = entries.map(e=>e[1]);
+  // 예: [2, 2, 3, 4] -> counts = {2: 2, 3: 1, 4: 1}
+
+  const entries = Object.entries(counts);  // 객체를 [값, 횟수] 형태의 배열로 변환
+  const nums = entries.map(e=>Number(e[0]));  // 값들만 숫자 형태로 꺼냄 → ['2', '3'] → [2, 3]
+  const freqs = entries.map(e=>e[1]);  // 빈도수만 추출 → [2, 1, 1]
   if(entries.length === 1){
       return 1111*nums[0];
   } else if(entries.length === 2){
       if(freqs.includes(3)){
-          const p = nums[freqs.indexOf(3)];
+          const p = nums[freqs.indexOf(3)];  // 3개 나온 숫자
           const q = nums[freqs.indexOf(1)];
           return Math.pow(10*p+q,2);
       } else {
           return (nums[0]+nums[1])*Math.abs(nums[0]-nums[1]);
       }
   } else if(entries.length === 3){
-      const pair = nums[freqs.indexOf(2)];
-      const others = nums.filter((_,i)=>freqs[i]===1);
+      const pair = nums[freqs.indexOf(2)]; // 2개 나온 숫자
+      const others = nums.filter((_,i)=>freqs[i]===1);   // 1개씩 나온 숫자 2개
       return others[0]*others[1];
   } else {
       return Math.min(...nums);
