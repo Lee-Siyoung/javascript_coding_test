@@ -4,9 +4,9 @@ function solution(my_string) {
   var answer = new Array(52).fill(0);
   for(let str of my_string){
       const ch = str.charCodeAt(0);
-      if(ch >= 65 && ch <= 90){ // 대문자
+      if(ch >= 65 && ch <= 90){ // 대문자 A(65) ~ Z(90) → 0 ~ 25
           answer[ch - 65]++;
-      } else {  // 소문자
+      } else {  // 소문자 a(97) ~ z(122) → 26 ~ 51
           answer[ch - 97 + 26]++
       }
   }
